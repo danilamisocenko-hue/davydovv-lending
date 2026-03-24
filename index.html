@@ -3,57 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DAVYDOVV | LABORATORY 2026</title>
-    
+    <title>DAVYDOVV | 2026</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Mono&display=swap');
-        
-        /* Базовые стили */
         :root { --b: #000; --w: #fff; --g: #1a1a1a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--b); color: var(--w); font-family: 'Space Mono', monospace; overflow-x: hidden; width: 100%; -webkit-text-size-adjust: 100%; }
+        body { background: var(--b); color: var(--w); font-family: 'Space Mono', monospace; overflow-x: hidden; width: 100%; }
 
-        /* Шапка */
-        header { position: fixed; top: 0; width: 100%; padding: 20px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; font-family: 'Syncopate'; background: linear-gradient(180deg, black 0%, transparent 100%); }
-        .logo { font-size: 0.9rem; letter-spacing: 2px; }
-        nav { display: flex; gap: 15px; }
-        nav a { color: var(--w); text-decoration: none; opacity: 0.6; font-size: 0.7rem; text-transform: uppercase; }
+        header { position: fixed; top: 0; width: 100%; padding: 20px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; font-family: 'Syncopate'; background: linear-gradient(180deg, black 80%, transparent); }
+        .logo { font-size: 0.8rem; letter-spacing: 2px; }
+        nav a { color: var(--w); text-decoration: none; margin-left: 15px; opacity: 0.6; font-size: 0.6rem; }
 
-        /* Главный экран */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 100px 20px 20px; }
-        .hero-bg-text { position: absolute; font-size: 20vw; font-family: 'Syncopate'; opacity: 0.05; z-index: 1; pointer-events: none; text-align: center; font-weight: 700;}
-        .hero-container { width: 100%; max-width: 400px; height: 100%; border: 1px solid var(--g); overflow: hidden; position: relative; z-index: 2;}
-        .main-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.5s; }
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 20px; }
+        .hero-container { width: 100%; max-width: 400px; height: 75vh; border: 1px solid var(--g); overflow: hidden; position: relative; z-index: 2; }
+        .main-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+
+        .collection { padding: 40px 15px; }
+        .wrapper { display: flex; flex-direction: column; gap: 40px; align-items: center; }
         
-        /* Секция COLLECTION (Вертикальный скролл на мобилке) */
-        .collection { padding: 80px 10px; }
-        .wrapper { display: flex; flex-direction: column; gap: 60px; align-items: center; width: 100%; max-width: 1200px; margin: 0 auto; }
-        
-        /* Карточка товара */
-        .p-card { width: 100%; max-width: 450px; text-align: center; }
-        .p-card img { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 30px rgba(255,255,255,0.05)); }
-        .p-info { margin-top: 20px; font-family: 'Syncopate'; font-weight: 700;}
-        .p-info h3 { font-size: 1.1rem; margin-bottom: 5px; text-transform: uppercase; }
-        .price { font-size: 1.5rem; color: #777; font-family: 'Space Mono'; }
+        .p-card { width: 100%; max-width: 400px; text-align: center; }
+        .p-card img { width: 100%; height: auto; border: 1px solid var(--g); display: block; }
+        .p-info { margin-top: 15px; font-family: 'Syncopate'; }
+        .p-info h3 { font-size: 0.9rem; margin-bottom: 5px; }
+        .price { font-size: 1.2rem; color: #555; }
 
-        /* Лукбук */
-        .lookbook { padding: 40px 10px; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-        .grid img { width: 100%; height: 60vh; object-fit: cover; filter: grayscale(1); }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 10px; }
+        .grid img { width: 100%; height: 50vh; object-fit: cover; filter: grayscale(1); border: 1px solid var(--g); }
 
-        /* Подвал */
-        footer { padding: 40px; text-align: center; opacity: 0.3; font-size: 0.6rem; border-top: 1px solid var(--g); letter-spacing: 1px; }
+        footer { padding: 40px; text-align: center; opacity: 0.3; font-size: 0.5rem; border-top: 1px solid var(--g); }
 
-        /* Адаптация для десктопа (планшеты и ПК) */
         @media (min-width: 768px) {
-            header { padding: 30px; }
-            .logo { font-size: 1.1rem; }
-            nav { gap: 30px; }
-            nav a { font-size: 0.8rem; }
-            .hero { padding: 20px; }
-            .hero-container { height: 75vh; }
-            .wrapper { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 80px; padding: 100px 20px; }
-            .p-card { width: calc(50% - 40px); }
+            .wrapper { flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 60px; }
+            .p-card { width: 40%; }
             .grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
@@ -62,25 +43,24 @@
 
     <header>
         <div class="logo">DAVYDOVV</div>
-        <nav><a href="#collection">COLLECTION</a><a href="#">BAG (0)</a></nav>
+        <nav><a href="#collection">COLLECTION</a><a href="#">BAG [0]</a></nav>
     </header>
 
     <main>
         <section class="hero">
-            <h1 class="hero-bg-text">DAVYDOVV</h1>
             <div class="hero-container">
-                <img src="./hero.jpg" alt="Davydovv Main" class="main-img">
+                <img src="./hero.jpg" class="main-img">
             </div>
         </section>
 
         <section id="collection" class="collection">
             <div class="wrapper">
                 <div class="p-card">
-                    <img src="./onyx.jpg" alt="Onyx Zip Polo">
+                    <img src="./onyx.jpg">
                     <div class="p-info"><h3>ONYX ZIP-POLO</h3><div class="price">3500 RUB</div></div>
                 </div>
                 <div class="p-card">
-                    <img src="./white.jpg" alt="White Archive">
+                    <img src="./white.jpg">
                     <div class="p-info"><h3>WHITE ARCHIVE</h3><div class="price">3333 RUB</div></div>
                 </div>
             </div>
@@ -88,8 +68,8 @@
 
         <section class="lookbook">
             <div class="grid">
-                <img src="./look1.jpg" alt="Look 1">
-                <img src="./look2.jpg" alt="Look 2">
+                <img src="./look1.jpg">
+                <img src="./look2.jpg">
             </div>
         </section>
     </main>
