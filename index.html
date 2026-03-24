@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAVYDOVV | LABORATORY 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+</head>
+<body>
+    <div id="cursor"></div>
+
+    <div class="loader">
+        <div class="loader-text">DAVYDOVV LOADING...</div>
+        <div class="progress-bar"><div class="progress"></div></div>
+    </div>
+
+    <header>
+        <div class="logo">DAVYDOVV</div>
+        <nav>
+            <a href="#manifesto">MANIFESTO</a>
+            <a href="#collection">COLLECTION</a>
+            <a href="#">CART (0)</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-bg-text">DAVYDOVV</h1>
+            <div class="hero-container">
+                <img src="hero.jpg" alt="Davydovv Main" class="main-img">
+            </div>
+            <div class="hero-label">LABORATORY / SPRING 26</div>
+        </section>
+
+        <section id="manifesto" class="manifesto">
+            <p class="reveal-text">
+                МЫ СОЗДАЕМ НЕ ПРОСТО ОДЕЖДУ. <br>
+                <span>МЫ СОЗДАЕМ ЦИФРОВУЮ РЕАЛЬНОСТЬ.</span> <br>
+                КАЖДЫЙ ШОВ — ЭТО КОД. КАЖДАЯ СТРАЗА — ПИКСЕЛЬ.
+            </p>
+        </section>
+
+        <section id="collection" class="horizontal-section">
+            <div class="horizontal-wrapper">
+                <div class="p-card white">
+                    <img src="white-polo.jpg" alt="White Zip Polo">
+                    <div class="p-info">
+                        <h3>ZIP-POLO / SNOW</h3>
+                        <p class="price">3333 RUB</p>
+                    </div>
+                </div>
+                <div class="p-card onyx">
+                    <div class="sparkle-layer"></div>
+                    <img src="onyx-polo.jpg" alt="Onyx Rhinestone Polo">
+                    <div class="p-info">
+                        <h3 class="glitch" data-text="ONYX / RHINESTONES">ONYX / RHINESTONES</h3>
+                        <p class="price">3500 RUB</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lookbook">
+            <div class="lookbook-title">LOOKBOOK</div>
+            <div class="grid">
+                <img src="look1.jpg" alt="Look 1" class="reveal">
+                <img src="look2.jpg" alt="Look 2" class="reveal">
+                <img src="look3.jpg" alt="Look 3" class="reveal">
+                <img src="look4.jpg" alt="Look 4" class="reveal">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="f-logo">DAVYDOVV</div>
+        <p>© 2026 BUILT BY AI FOR THE CHOSEN ONES</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
