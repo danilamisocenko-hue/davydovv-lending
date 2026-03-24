@@ -7,63 +7,77 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Mono&display=swap');
-        
+    </style>
+    
+    <style>
         :root { --b: #000; --w: #fff; --g: #111; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--b); color: var(--w); font-family: 'Space Mono', monospace; overflow-x: hidden; width: 100%; }
-
-        /* Кастомный курсор (только для ПК) */
-        #cursor { 
-            position: fixed; width: 10px; height: 10px; background: var(--w); 
-            border-radius: 50%; z-index: 10000; pointer-events: none; 
-            mix-blend-mode: difference; display: none; 
-        }
+        body { background: var(--b); color: var(--w); font-family: 'Space Mono', monospace; overflow-x: hidden; width: 100%; -webkit-text-size-adjust: 100%; }
 
         header { 
-            position: fixed; top: 0; width: 100%; padding: 30px 20px; 
+            position: fixed; top: 0; width: 100%; padding: 20px; 
             z-index: 1000; display: flex; justify-content: space-between; 
             font-family: 'Syncopate'; background: linear-gradient(180deg, black 0%, transparent 100%);
         }
         .logo { font-size: 0.8rem; letter-spacing: 3px; }
-        nav a { color: var(--w); text-decoration: none; font-size: 0.6rem; opacity: 0.5; margin-left: 15px; }
+        nav { display: flex; gap: 15px; }
+        nav a { color: var(--w); text-decoration: none; font-size: 0.6rem; opacity: 0.5; }
 
-        /* HERO */
-        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
-        .hero-bg-text { position: absolute; font-size: 20vw; font-family: 'Syncopate'; opacity: 0.05; z-index: 1; pointer-events: none; }
-        .hero-container { width: 100%; max-width: 400px; height: 70vh; border: 1px solid #222; overflow: hidden; z-index: 2; position: relative; }
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 100px 20px 20px; }
+        .hero-container { width: 100%; max-width: 400px; height: 100%; border: 1px solid #222; overflow: hidden; position: relative; z-index: 2; }
         .hero-container img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
 
-        /* COLLECTION */
-        .horizontal-section { position: relative; width: 100%; }
-        .horizontal-wrapper { display: flex; flex-direction: column; align-items: center; gap: 60px; padding: 60px 20px; }
+        footer { padding: 40px; text-align: center; font-size: 0.5rem; opacity: 0.3; border-top: 1px solid #111; letter-spacing: 1px;}
+    </style>
 
+    <style>
+        /* Скроем ПК-блоки по умолчанию */
+        #cursor, .hero-bg-text { display: none; }
+
+        .collection-mobile { padding: 60px 15px; }
+        .mobile-wrapper { display: flex; flex-direction: column; gap: 60px; align-items: center; }
+        
         .p-card { width: 100%; max-width: 450px; text-align: center; }
-        .p-card img { width: 100%; border: 1px solid #1a1a1a; margin-bottom: 15px; }
-        .p-info h3 { font-family: 'Syncopate'; font-size: 0.9rem; margin-bottom: 8px; }
+        .p-card img { width: 100%; height: auto; border: 1px solid #1a1a1a; margin-bottom: 15px; display: block;}
+        .p-info h3 { font-family: 'Syncopate'; font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; }
         .price { font-size: 1.2rem; color: #555; }
 
-        /* LOOKBOOK */
-        .grid { display: grid; grid-template-columns: 1fr; gap: 10px; padding: 10px; }
-        .grid img { width: 100%; height: 60vh; object-fit: cover; filter: grayscale(1); border: 1px solid #1a1a1a; }
-
-        footer { padding: 60px 20px; text-align: center; font-size: 0.5rem; opacity: 0.3; border-top: 1px solid #111; }
-
-        /* --- DESKTOP ONLY --- */
+        .lookbook-mobile { padding: 40px 10px; }
+        .grid-mobile { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        .grid-mobile img { width: 100%; height: 60vh; object-fit: cover; filter: grayscale(1); border: 1px solid #1a1a1a; }
+        
+        /* Скроем Мобильную версию на ПК */
         @media (min-width: 1024px) {
-            #cursor { display: block; }
-            .hero-bg-text { font-size: 25vw; }
+            .collection-mobile, .lookbook-mobile { display: none; }
+        }
+    </style>
+
+    <style>
+        @media (min-width: 1024px) {
+            #cursor { position: fixed; width: 10px; height: 10px; background: var(--w); border-radius: 50%; z-index: 10000; pointer-events: none; mix-blend-mode: difference; display: block; }
+            header { padding: 30px 40px; }
+            .logo { font-size: 1rem; }
+            nav { gap: 30px; }
+            nav a { font-size: 0.8rem; }
             
-            .horizontal-section { height: 100vh; overflow: hidden; }
-            .horizontal-wrapper { 
-                flex-direction: row; 
-                width: 200vw; 
-                height: 100vh; 
-                padding: 0 10vw; 
-                gap: 0; 
-            }
-            .p-card { width: 450px; margin-right: 15vw; }
-            .grid { grid-template-columns: 1fr 1fr; padding: 40px; }
-            .grid img { height: 80vh; }
+            .hero { padding: 0; }
+            .hero-bg-text { display: block; position: absolute; font-size: 20vw; font-family: 'Syncopate'; opacity: 0.05; z-index: 1; pointer-events: none; }
+            .hero-container { height: 75vh; }
+            
+            /* Горизонтальный скролл на ПК */
+            .horizontal-section { height: 100vh; overflow: hidden; position: relative; width: 100%; display: block;}
+            .horizontal-wrapper { display: flex; flex-direction: row; width: 200vw; height: 100vh; align-items: center; padding: 0 10vw; }
+            .p-card-pc { width: 450px; margin-right: 15vw; text-align: center; }
+            .p-card-pc img { width: 100%; border: 1px solid #1a1a1a; margin-bottom: 15px; }
+            
+            .lookbook-pc { padding: 60px 5%; }
+            .grid-pc { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+            .grid-pc img { width: 100%; height: 80vh; object-fit: cover; filter: grayscale(1); border: 1px solid #1a1a1a; }
+        }
+        
+        /* Скроем ПК-версию на Мобилках */
+        @media (max-width: 1023px) {
+            .horizontal-section, .lookbook-pc { display: none; }
         }
     </style>
 </head>
@@ -73,34 +87,54 @@
 
     <header>
         <div class="logo">DAVYDOVV</div>
-        <nav><a href="#collection">COLLECTION</a><a href="#">INSTAGRAM</a></nav>
+        <nav><a href="#manifesto">MANIFESTO</a><a href="#">INSTAGRAM</a></nav>
     </header>
 
     <main>
         <section class="hero">
             <h1 class="hero-bg-text">DAVYDOVV</h1>
             <div class="hero-container">
-                <img src="./hero.jpg" alt="main">
+                <img src="./hero.jpg" alt="main_archive">
             </div>
         </section>
 
-        <section id="collection" class="horizontal-section">
+        <section class="horizontal-section">
             <div class="horizontal-wrapper">
-                <div class="p-card">
+                <div class="p-card-pc">
                     <img src="./onyx.jpg" alt="onyx">
                     <div class="p-info"><h3>ONYX ZIP-POLO</h3><div class="price">3500 RUB</div></div>
                 </div>
-                <div class="p-card">
+                <div class="p-card-pc">
                     <img src="./white.jpg" alt="white">
                     <div class="p-info"><h3>WHITE ARCHIVE</h3><div class="price">3333 RUB</div></div>
                 </div>
             </div>
         </section>
 
-        <section class="lookbook">
-            <div class="grid">
-                <img src="./look1.jpg" alt="look1">
-                <img src="./look2.jpg" alt="look2">
+        <section class="lookbook-pc">
+            <div class="grid-pc">
+                <img src="./look1.jpg">
+                <img src="./look2.jpg">
+            </div>
+        </section>
+
+        <section id="manifesto" class="collection-mobile">
+            <div class="mobile-wrapper">
+                <div class="p-card">
+                    <img src="./onyx.jpg">
+                    <div class="p-info"><h3>ONYX ZIP-POLO</h3><div class="price">3500 RUB</div></div>
+                </div>
+                <div class="p-card">
+                    <img src="./white.jpg">
+                    <div class="p-info"><h3>WHITE ARCHIVE</h3><div class="price">3333 RUB</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="lookbook-mobile">
+            <div class="grid-mobile">
+                <img src="./look1.jpg">
+                <img src="./look2.jpg">
             </div>
         </section>
     </main>
@@ -112,15 +146,14 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
 
     <script>
-        const isMobile = window.innerWidth < 1024;
+        const isDesktop = window.innerWidth >= 1024;
 
-        // Плавный скролл
-        const lenis = new Lenis();
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
+        // Плавный скролл (ТОЛЬКО ПК)
+        if(isDesktop) {
+            const lenis = new Lenis();
+            function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+            requestAnimationFrame(raf);
 
-        // Курсор для ПК
-        if(!isMobile) {
             const cursor = document.querySelector("#cursor");
             document.addEventListener("mousemove", (e) => {
                 gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
